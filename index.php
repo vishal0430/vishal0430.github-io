@@ -24,34 +24,7 @@
 </head>
 
 <body>
-    <?php
-        if($_POST!=null){
-            $mail = new PHPMailer();
-            $mail->IsSMTP();
-            $mail->Mailer = "smtp";
-            $mail->SMTPDebug  = 0;  
-            $mail->SMTPAuth   = TRUE;
-            $mail->SMTPSecure = "tls";
-            $mail->Port       = 587;
-            $mail->Host       = "smtp.gmail.com";
-            $mail->Username   = "vishupiddu4127@gmail.com";
-            $mail->Password   = "Hero@0430";
-            $mail->IsHTML(true);
-            $mail->AddAddress("vishalpatole428@gmail.com", "Vishal Patole");
-            $mail->SetFrom("vishalpatole428@gmail.com", "{$_POST['name']}");
-            $mail->AddReplyTo("{$_POST['email']}", "{$_POST['name']}");
-            // $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
-            $mail->Subject = $_POST["subject"];
-            $content = $_POST["message"];
-            $mail->MsgHTML($content); 
-            if(!$mail->Send()) {
-                echo '<script>alert("Something went wrong. Please try again and check email.")</script>';
-            } else {
-                echo '<script>alert("Request sent successfully !!")</script>';
-            }
-            $_POST = array();
-        }
-      ?>
+    
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
@@ -382,5 +355,34 @@
 
     <script src="script.js"></script>
 </body>
+
+<?php
+        if($_POST!=null){
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->Mailer = "smtp";
+            $mail->SMTPDebug  = 0;  
+            $mail->SMTPAuth   = TRUE;
+            $mail->SMTPSecure = "tls";
+            $mail->Port       = 587;
+            $mail->Host       = "smtp.gmail.com";
+            $mail->Username   = "vishupiddu4127@gmail.com";
+            $mail->Password   = "Hero@0430";
+            $mail->IsHTML(true);
+            $mail->AddAddress("vishalpatole428@gmail.com", "Vishal Patole");
+            $mail->SetFrom("vishalpatole428@gmail.com", "{$_POST['name']}");
+            $mail->AddReplyTo("{$_POST['email']}", "{$_POST['name']}");
+            // $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
+            $mail->Subject = $_POST["subject"];
+            $content = $_POST["message"];
+            $mail->MsgHTML($content); 
+            if(!$mail->Send()) {
+                echo '<script>alert("Something went wrong. Please try again and check email.")</script>';
+            } else {
+                echo '<script>alert("Request sent successfully !!")</script>';
+            }
+            $_POST = array();
+        }
+      ?>
 
 </html>
