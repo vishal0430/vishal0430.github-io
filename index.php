@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
 <html lang="en">
-
+<?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    require 'PHPMailer-master/src/Exception.php';
+    require 'PHPMailer-master/src/PHPMailer.php';
+    require 'PHPMailer-master/src/SMTP.php';
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,24 +26,30 @@
 <body>
     <?php
         if($_POST!=null){
-         $to = "vishalpatole428@gmail.com";
-         $subject = $_POST["subject"];
-         
-         $message = $_POST["message"];
-        //  $message .= "<h1>This is headline.</h1>";
-         
-         $header = "From:{$_POST['email']} \r\n";
-        //  $header .= "Cc:afgh@somedomain.com \r\n";
-         $header .= "MIME-Version: 1.0\r\n";
-         $header .= "Content-type: text/html\r\n";
-         
-         $retval = mail ($to,$subject,$message,$header);
-         
-         if( $retval == true ) {
-            echo "Message sent successfully...";
-         }else {
-            echo "Message could not be sent...";
-         }
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->Mailer = "smtp";
+            $mail->SMTPDebug  = 0;  
+            $mail->SMTPAuth   = TRUE;
+            $mail->SMTPSecure = "tls";
+            $mail->Port       = 587;
+            $mail->Host       = "smtp.gmail.com";
+            $mail->Username   = "vishupiddu4127@gmail.com";
+            $mail->Password   = "Hero@0430";
+            $mail->IsHTML(true);
+            $mail->AddAddress("vishalpatole428@gmail.com", "Vishal Patole");
+            $mail->SetFrom("vishalpatole428@gmail.com", "{$_POST['name']}");
+            $mail->AddReplyTo("{$_POST['email']}", "{$_POST['name']}");
+            // $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
+            $mail->Subject = $_POST["subject"];
+            $content = $_POST["message"];
+            $mail->MsgHTML($content); 
+            if(!$mail->Send()) {
+                echo '<script>alert("Something went wrong. Please try again and check email.")</script>';
+            } else {
+                echo '<script>alert("Request sent successfully !!")</script>';
+            }
+            $_POST = array();
         }
       ?>
     <div class="scroll-up-btn">
