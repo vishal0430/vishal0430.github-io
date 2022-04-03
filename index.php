@@ -19,6 +19,28 @@
 </head>
 
 <body>
+    <?php
+        if($_POST!=null){
+         $to = "vishalpatole428@gmail.com";
+         $subject = $_POST["subject"];
+         
+         $message = $_POST["message"];
+        //  $message .= "<h1>This is headline.</h1>";
+         
+         $header = "From:{$_POST['email']} \r\n";
+        //  $header .= "Cc:afgh@somedomain.com \r\n";
+         $header .= "MIME-Version: 1.0\r\n";
+         $header .= "Content-type: text/html\r\n";
+         
+         $retval = mail ($to,$subject,$message,$header);
+         
+         if( $retval == true ) {
+            echo "Message sent successfully...";
+         }else {
+            echo "Message could not be sent...";
+         }
+        }
+      ?>
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
@@ -320,17 +342,17 @@
                     <form action="#" method="post">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" placeholder="Name" name="name" required>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" placeholder="Email" name="email" required>
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" placeholder="Subject" name="subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10" placeholder="Message.." name="message" required></textarea>
                         </div>
                         <div class="button-area">
                             <button type="submit">Send message</button>
