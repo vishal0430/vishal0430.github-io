@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
 <html lang="en">
 
 <head>
@@ -19,6 +18,28 @@
 </head>
 
 <body>
+    <?php
+        if($_POST['message']!=null){
+         $to = "xyz@somedomain.com";
+         $subject = "This is subject";
+         
+         $message = "<b>This is HTML message.</b>";
+         $message .= "<h1>This is headline.</h1>";
+         
+         $header = "From:abc@somedomain.com \r\n";
+         $header .= "Cc:afgh@somedomain.com \r\n";
+         $header .= "MIME-Version: 1.0\r\n";
+         $header .= "Content-type: text/html\r\n";
+         
+         $retval = mail ($to,$subject,$message,$header);
+         
+         if( $retval == true ) {
+            echo "Message sent successfully...";
+         }else {
+            echo "Message could not be sent...";
+         }
+        }
+      ?>
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
@@ -234,6 +255,26 @@
                         </div>
                     </a>
                 </div>
+                <div class="card">
+                    <a href="https://play.google.com/store/apps/details?id=com.vishalpatole.sudoku"
+                        target="_blank">
+                        <div class="box">
+                            <img src="images/sudoku.png" alt="">
+                            <div class="text" style="color: black;">ScanX Pro</div>
+                            <!-- <p style="color: white;">Decision Support Consultant and Manages Marketing Strategies.</p> -->
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://play.google.com/store/apps/details?id=com.vishalpatole.wordsspy"
+                        target="_blank">
+                        <div class="box">
+                            <img src="images/wordsspy.png" alt="">
+                            <div class="text" style="color: black;">ScanX Pro</div>
+                            <!-- <p style="color: white;">Decision Support Consultant and Manages Marketing Strategies.</p> -->
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -320,17 +361,17 @@
                     <form action="#" method="post">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" placeholder="Name" name="name" required>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" placeholder="Email" name="email" required>
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" placeholder="Subject" name="subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10" placeholder="Message.." name="message" required></textarea>
                         </div>
                         <div class="button-area">
                             <button type="submit">Send message</button>
