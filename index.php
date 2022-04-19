@@ -245,7 +245,7 @@
                         target="_blank">
                         <div class="box">
                             <img src="images/sudoku.png" alt="">
-                            <div class="text" style="color: black;">ScanX Pro</div>
+                            <div class="text" style="color: black;">Sudoku</div>
                             <!-- <p style="color: white;">Decision Support Consultant and Manages Marketing Strategies.</p> -->
                         </div>
                     </a>
@@ -255,7 +255,7 @@
                         target="_blank">
                         <div class="box">
                             <img src="images/wordsspy.png" alt="">
-                            <div class="text" style="color: black;">ScanX Pro</div>
+                            <div class="text" style="color: black;">Wrods Spy</div>
                             <!-- <p style="color: white;">Decision Support Consultant and Manages Marketing Strategies.</p> -->
                         </div>
                     </a>
